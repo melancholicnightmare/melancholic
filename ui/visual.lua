@@ -108,7 +108,7 @@ function ESP:Get_Tool(Player)
             return Tool.Name
         end
     end
-    return "Empty"
+    return "None"
 end
 
 function ESP:Get_Health(Player)
