@@ -67,7 +67,7 @@ local ESP; ESP = {
         Name = {Enabled = false, Position = "Top", Color = Color3.fromRGB(255, 255, 255), Transparency = 0, OutlineColor = Color3.new(0, 0, 0)},
         Distance = {Enabled = false, Position = "Left", Color = Color3.fromRGB(255, 255, 255), Transparency = 0, OutlineColor = Color3.new(0, 0, 0)},
         Tool = {Enabled = false, Position = "Bottom", Color = Color3.fromRGB(255, 255, 255), Transparency = 0, OutlineColor = Color3.new(0, 0, 0)},
-        Health = {Enabled = false, Position = "Left", Transparency = 0, OutlineColor = Color3.new(0, 0, 0)},
+        Health = {Enabled = false, Position = "Right", Transparency = 0, OutlineColor = Color3.fromRGB(0, 0, 0)},
         Chams = {Enabled = false, Color = Color3.fromRGB(123, 0, 189), VisColor = Color3.fromRGB(255, 255, 255), Mode = "AlwaysOnTop", OutlineColor = Color3.fromRGB(123, 0, 189), Transparency = 0.5, OutlineTransparency = 1}
     },
     Objects = {},
@@ -468,10 +468,11 @@ do -- // Player Metatable \\ --
                         Health.Position = Vector2.new(Box_Size.X / 2 + Box_Position.X, Bottom_Offset) 
                         Bottom_Offset = Bottom_Offset + 10
                     elseif Health_Position == "Left" then
-                        if Healthbar_Position == "Left" then
-                            Health.Position = Health_Left_Pos_Fill - Vector2.new(Health.TextBounds.X/2 - 2 + 4, -(100 * Health_Left_Size_Fill.Y / 100) + 2 - Left_Offset)
+                        if ESP.Settings.Distance.Enabled == true then
+                            Health.Position = Health_Left_Pos_Outline - Vector2.new(Health.TextBounds.X/2 - 2 + 4, -(100 * Health_Left_Size_Outline.Y / 100) + 2 - Left_Offset)
                         else
-                            Health.Position = Health_Left_Pos_Fill - Vector2.new(Health.TextBounds.X/2 - 2 + 1, -(100 * Health_Left_Size_Fill.Y / 100) + 2 - Left_Offset)
+                            Health.Position = Health_Left_Pos_Outline - Vector2.new(Distance.TextBounds.X/2 - 2, -(100 * Health_Left_Size_Outline.Y / 100) + 2 - Left_Offset)
+                            Distance.Position = Health_Left_Pos_Outline - Vector2.new(Distance.TextBounds.X/2 - 2, -(100 * Health_Left_Size_Outline.Y / 100) + 2 - Left_Offset)
                         end
                         Left_Offset = Left_Offset + 10
                     elseif Health_Position == "Right" then
@@ -483,10 +484,10 @@ do -- // Player Metatable \\ --
                         Right_Offset = Right_Offset + 10
                     end
                     Health.Text = tostring(mathfloor(Current_Health + 0.5))
-                    Health.Color = Health_Lerp_Color
                     Health.OutlineColor = Health_Settings.OutlineColor
                     Health.Transparency = Framework:Drawing_Transparency(Health_Settings.Transparency)
                     Health.Visible = Health_Settings.Enabled
+                    Health.Color = Health_Lerp_Color
                     HealthBold.Text = tostring(mathfloor(Current_Health + 0.5))
                     HealthBold.Color = Health_Lerp_Color
                     HealthBold.OutlineColor = Health_Settings.OutlineColor
