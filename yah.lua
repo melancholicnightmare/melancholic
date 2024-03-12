@@ -4,7 +4,7 @@ local Camera = Workspace.CurrentCamera
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local RunService = game:GetService("RunService")
-local CoreGui = game:GetService("CoreGui")
+local CoreGui = cloneref(game:GetService("CoreGui"))
 local mathfloor = math.floor
 local tableinsert = table.insert
 
