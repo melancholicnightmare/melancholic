@@ -75,6 +75,58 @@ local ESP; ESP = {
 }
 ESP.__index = ESP
 
+                local ToolNames = {
+                    ["Bruno's M4A1"] = true,
+                    ["Crossbow"] = true,
+                    ["Salvaged Shovel"] = true,
+                    ["Salvaged Pipe Rifle"] = true,
+                    ["Steel Axe"] = true,
+                    ["Salvaged RPG"] = true,
+                    ["Small Medkit"] = true,
+                    ["Yellow Keycard"] = true,
+                    ["Salvaged Pump Action"] = true,
+                    ["Pink Keycard"] = true,
+                    ["Salvaged SMG"] = true,
+                    ["Salvaged AK47"] = true,
+                    ["Boulder"] = true,
+                    ["Care Package Signal"] = true,
+                    ["Salvaged AK74u"] = true,
+                    ["ez shovel"] = true,
+                    ["Dynamite Stick"] = true,
+                    ["Military Barrett"] = true,
+                    ["Nail Gun"] = true,
+                    ["Iron Shard Hatchet"] = true,
+                    ["Military M4A1"] = true,
+                    ["Wooden Spear"] = true,
+                    ["Dynamite Bundle"] = true,
+                    ["Stone Spear"] = true,
+                    ["Salvaged P250"] = true,
+                    ["Iron Shard Pickaxe"] = true,
+                    ["Military PKM"] = true,
+                    ["Steel Shovel"] = true,
+                    ["Timed Charge"] = true,
+                    ["Steel Pickaxe"] = true,
+                    ["Lighter"] = true,
+                    ["Blueprint"] = true,
+                    ["Salvaged M14"] = true,
+                    ["Machete"] = true,
+                    ["Stone Hatchet"] = true,
+                    ["Bandage"] = true,
+                    ["Saw Bat"] = true,
+                    ["Wooden Bow"] = true,
+                    ["Military Grenade"] = true,
+                    ["Health Pen"] = true,
+                    ["Candy Cane"] = true,
+                    ["Hammer"] = true,
+                    ["Military AA12"] = true,
+                    ["Salvaged Python"] = true,
+                    ["Purple Keycard"] = true,
+                    ["Bone Tool"] = true,
+                    ["Stone Pickaxe"] = true,
+                    ["Salvaged Skorpion"] = true,
+                    ["Salvaged Break Action"] = true
+                }
+
 function ESP:GetObject(Object)
     return self.Objects[Object]
 end
@@ -103,9 +155,10 @@ function ESP:Get_Tool(Player)
     end
     local Character = self:Get_Character(Player)
     if Character then
-        local Tool = Character:FindFirstChild("Salvaged SMG") or Character:FindFirstChild("Wooden Bow") or Character:FindFirstChild("Lighter") or Character:FindFirstChild("Salvaged Python") or Character:FindFirstChild("Salvaged P250") or Character:FindFirstChild("Salvaged AK74u") or Character:FindFirstChild("Boulder") or Character:FindFirstChild("Salvaged Break Action") or Character:FindFirstChild("Salvaged Pump Action") or Character:FindFirstChild("Salvaged Pipe Rifle") or Character:FindFirstChild("Salvaged Skorpion") or Character:FindFirstChild("Salvaged M14") or Character:FindFirstChild("Salvaged RPG") or Character:FindFirstChild("Salvaged AK47") or Character:FindFirstChild("Salvaged Shovel") or Character:FindFirstChild("Crossbow") or Character:FindFirstChild("Stone Hatchet") or Character:FindFirstChild("Iron Shard Hatchet") or Character:FindFirstChild("Stone Pickaxe") or Character:FindFirstChild("Iron Shard Pickaxe") or Character:FindFirstChild("Steel Pickaxe") or Character:FindFirstChild("Steel Axe") or Character:FindFirstChild("Wooden Spear") or Character:FindFirstChild("Stone Spear") or Character:FindFirstChild("Machete") or Character:FindFirstChild("Bandage") or Character:FindFirstChild("Small Medkit") or Character:FindFirstChild("Timed Charge") or Character:FindFirstChild("Nail Gun") or Character:FindFirstChild("Dynamite Stick") or Character:FindFirstChild("Military Grenade") or Character:FindFirstChild("Dynamite Bundle") or Character:FindFirstChild("Bone Tool") or Character:FindFirstChild("Military M4A1") or Character:FindFirstChild("Military PKM") or Character:FindFirstChild("Military AA12") or Character:FindFirstChild("Military Barrett") or Character:FindFirstChild("Bruno's M4A1")
-        if Tool then
-            return Tool.Name
+        for _, v in ipairs(Character:GetChildren()) do
+        if ToolNames[v.Name] then
+            return v.Name
+        end
         end
     end
     return "None"
