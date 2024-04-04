@@ -103,7 +103,7 @@ function ESP:Get_Tool(Player)
     end
     local Character = self:Get_Character(Player)
     if Character then
-        local Tool = Character:FindFirstChildOfClass("Tool") or Character:FindFirstChildOfClass("Model")
+        local Tool = Character:FindFirstChildOfClass("Tool")
         if Tool then
             return Tool.Name
         end
