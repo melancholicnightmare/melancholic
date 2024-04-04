@@ -103,7 +103,7 @@ function ESP:Get_Tool(Player)
     end
     local Character = self:Get_Character(Player)
     if Character then
-        local Tool = Character:FindFirstChildOfClass("Tool")
+        local Tool = Character:FindFirstChildOfClass("Tool") or Character:FindFirstChildOfClass("Model")
         if Tool then
             return Tool.Name
         end
@@ -651,7 +651,7 @@ do -- // ESP Functions \\ --
         Components.ToolBold = Framework:Draw("Text", {Font = 2, Size = 13, Center = true})
         Components.Health = Framework:Draw("Text", {Font = 2, Size = 13, Outline = true, ZIndex = 4, Center = true})
         Components.HealthBold = Framework:Draw("Text", {Font = 2, Size = 13, Center = true})
-        Components.Chams = _G.chamsEnabled == true and Framework:Instance("Highlight", {Parent = CoreGui, DepthMode = Enum.HighlightDepthMode.AlwaysOnTop}) or true
+        Components.Chams = _G.chamsEnabled == true
         self.Objects[Instance] = Object
         return Object
     end
